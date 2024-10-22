@@ -4,6 +4,7 @@ import HeaderComp from "../components/Header/Page";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProductBySpecificCategories } from "../store/productSlice";
 import IteamCard from "../components/ItemCard/page";
+import Loader from "../components/Loader/page";
 
 const MensCloathing = () => {
   const dispatch = useDispatch();
@@ -13,6 +14,14 @@ const MensCloathing = () => {
 
 
   const mensData = useSelector((state)=>state.products.categoriesProducts)
+
+  const mensDataLoadingState = useSelector((state)=>state.products.categoriesProductsStatus)
+
+
+  if (mensDataLoadingState === "loading") {
+    return <Loader />;
+  }
+
   return (
     <React.Fragment>
       <HeaderComp />
