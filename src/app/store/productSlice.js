@@ -5,15 +5,20 @@ const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
   async () => {
-    const response = await axios.get("https://dummyjson.com/products");
-    return response.data.products;
+    const response = await axios.get(
+      "https://fakestoreapi.com/products?sort=desc"
+    );
+    return response.data;
   }
 );
 
-export const fetchProductById = createAsyncThunk(
-  "products/fetchProductById",
-  async (id) => {
-    const response = await axios.get(`https://dummyjson.com/products/${id}`);
+export const fetchProductBySpecificCategories = createAsyncThunk(
+  "products/fetchSpecificCategories",
+  async (category) => {
+    const response = await axios.get(
+      `https://fakestoreapi.com/products/category/${category}`
+    );
+
     return response.data;
   }
 );
@@ -21,40 +26,37 @@ export const fetchProductById = createAsyncThunk(
 const ProductsSlice = createSlice({
   name: "products",
   initialState: {
-    products: [],
-    product: null,
-    userProducts: [],
-    status: "idle",
-    error: null,
-    addStatus: "idle",
-    addError: null,
+    allProducts: [],
+    allProductsStatus: "idle",
+    allProductsError: null,
 
-    singleProduct: null,
-    singleProductStatus: "idle",
-    singleProductError: null,
+    categoriesProducts: [],
+    categoriesProductsStatus: "idle",
+    categoriesProductsError: null,
   },
 
   extraReducers: (builder) => {
     builder
       .addCase(fetchProducts.pending, (state) => {
-        state.status = "loading";
+        state.allProductsStatus = "loading";
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
-        state.status = "sucess";
-        state.products = action.payload;
+        state.allProductsStatus = "sucess";
+        state.allProducts = action.payload;
       })
       .addCase(fetchProducts.rejected, (state) => {
-        state.status = "error";
+        state.allProductsStatus = "error";
       })
-      .addCase(fetchProductById.pending, (state) => {
-        state.singleProductStatus = "loading";
+
+      .addCase(fetchProductBySpecificCategories.pending, (state) => {
+        state.categoriesProductsStatus = "loading";
       })
-      .addCase(fetchProductById.fulfilled, (state, action) => {
-        state.singleProductStatus = "sucess";
-        state.singleProduct = action.payload;
+      .addCase(fetchProductBySpecificCategories.fulfilled, (state, action) => {
+        state.categoriesProductsStatus = "sucess";
+        state.categoriesProducts = action.payload;
       })
-      .addCase(fetchProductById.rejected, (state) => {
-        state.singleProductStatus = "error";
+      .addCase(fetchProductBySpecificCategories.rejected, (state) => {
+        state.categoriesProductsStatus = "error";
       });
   },
 });

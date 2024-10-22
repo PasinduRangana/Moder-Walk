@@ -1,5 +1,8 @@
 "use client";
 
+import { fetchProductBySpecificCategories } from "@/app/store/productSlice";
+import { useDispatch } from "react-redux";
+
 const CategoryCard = () => {
   return (
     <div className="flex flex-row">
