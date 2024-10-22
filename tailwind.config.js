@@ -10,7 +10,37 @@ module.exports = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        gray: "#D9D9D9",
+        red: "#FF0000",
+        black: "#0E0E0E",
+        blue: "#0E42FD",
+        white:"#FFFFFF",
       },
+      fontFamily: {
+        title: ["Roboto", "sans-serif"],
+      },
+      fontSize: {
+        "main-header-size": "34px",
+        "sub-header-size": "20px",
+        "card-title-size": "15px",
+        "card-discription-size": "10px",
+      },
+
+      fontWeight: {
+        "main-header-weight": "700",
+        "discription-text-weight": "400",
+      },
+
+      boxShadow: {
+        customShadow: "0px 5px 8px 0px #D9D9D9",
+      },
+
+      backgroundColor: {
+        "men": "#2BD9AF",
+        "woman": "#FF5E84",
+      },
+
+      
     },
   },
   plugins: [],
