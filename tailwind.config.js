@@ -14,6 +14,7 @@ module.exports = {
         red: "#FF0000",
         black: "#0E0E0E",
         blue: "#0E42FD",
+        white:"#FFFFFF",
       },
       fontFamily: {
         title: ["Roboto", "sans-serif"],
@@ -21,8 +22,8 @@ module.exports = {
       fontSize: {
         "main-header-size": "34px",
         "sub-header-size": "20px",
-        "card-discription-size": "38px",
-        "price-size": "60px",
+        "card-title-size": "15px",
+        "card-discription-size": "10px",
       },
 
       fontWeight: {
@@ -35,9 +36,11 @@ module.exports = {
       },
 
       backgroundColor: {
-        men: "#2BD9AF",
-        woman: "#FF5E84",
+        "men": "#2BD9AF",
+        "woman": "#FF5E84",
       },
+
+      
     },
   },
   plugins: [],
