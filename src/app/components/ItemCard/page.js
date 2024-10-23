@@ -32,9 +32,11 @@ const IteamCard = ({ data }) => {
         <p className="font-title text-blue font-main-header-weight text-card-title-size">
           Rs {data.price}
         </p>
-        <p className="font-title text-black text-card-discription-size font-discription-text-weight text-center line-clamp-3 break-words">
-          {data.description}
-        </p>
+        <div className="container">
+          <p className="line-clamp-3 break-words font-title text-black text-card-discription-size font-discription-text-weight ">
+            {data.description}
+          </p>
+        </div>
       </div>
     </div>
   );
